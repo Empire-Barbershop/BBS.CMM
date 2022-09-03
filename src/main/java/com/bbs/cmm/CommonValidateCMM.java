@@ -22,8 +22,8 @@ public class CommonValidateCMM {
      * @param values representa las cadenas.
      * @return {@link boolean}
      */
-    public static boolean isValidString(String... values) {
-        if (!isValidArray(values))
+    public static boolean isString(String... values) {
+        if (!isArray(values))
             return ConstantCMM.VALUE_BOOLEAN_FALSE;
         for (String value : values) {
             if (ConstantCMM.VALUE_OBJECT_DEFAULT == value || value.trim().isEmpty())
@@ -37,8 +37,8 @@ public class CommonValidateCMM {
      * @param values representa los objetos.
      * @return {@link boolean}
      */
-    public static boolean isValidObject(Object ... values){
-        if (!isValidArray(values))
+    public static boolean isObject(Object ... values){
+        if (!isArray(values))
             return ConstantCMM.VALUE_BOOLEAN_FALSE;
         for(Object object : values)
             if (ConstantCMM.VALUE_OBJECT_DEFAULT == object)
@@ -52,7 +52,7 @@ public class CommonValidateCMM {
      * @return {@link boolean}
      * @param <T> representa tipo de dato del array.
      */
-    public static <T> boolean isValidArray(T... array){
+    public static <T> boolean isArray(T... array){
         return ConstantCMM.VALUE_OBJECT_DEFAULT !=  array &&  array.length > ConstantCMM.VALUE_INTEGER_ZERO;
     }
 
@@ -62,7 +62,7 @@ public class CommonValidateCMM {
      * @return {@link boolean}
      * @param <T> representa tipo de dato de la lista.
      */
-    public static <T> boolean isValidList(List<T> elments){
+    public static <T> boolean isList(List<T> elments){
         return ConstantCMM.VALUE_OBJECT_DEFAULT != elments && elments.size() > ConstantCMM.VALUE_INTEGER_ZERO;
     }
 }

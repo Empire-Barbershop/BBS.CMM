@@ -29,7 +29,7 @@ public class BBSException extends Exception {
 
     public BBSException(String codeError, String message){
         super(message);
-        if(!CommonValidateCMM.isValidString(codeError))
+        if(!CommonValidateCMM.isString(codeError))
             this.codeError = ConstantSystemCMM.CODE_ERROR_RESPONSE_COMMUNICATION;
         else
             this.codeError = codeError;

@@ -17,6 +17,8 @@ import java.io.File;
  */
 public class CommonFileCMM {
 
+    private CommonFileCMM(){}
+
     /**
      * Metodo que permite abrir un archivo.
      * @param path representa la ruta.
@@ -50,13 +52,13 @@ public class CommonFileCMM {
      * @throws BBSFileException representa la excepcion capturada del archivo.
      */
     private static File open(String path, String fileName, boolean isClassLoader, Class<?> clazz) throws BBSFileException {
-        if(!CommonValidateCMM.isValidString(path, fileName) || (isClassLoader && !CommonValidateCMM.isValidObject(clazz)))
+        if(!CommonValidateCMM.isString(path, fileName) || (isClassLoader && !CommonValidateCMM.isObject(clazz)))
             throw new BBSFileException(ConstantSystemCMM.CODE_ERROR_FILE_NOT_FOUND, ConstantSystemCMM.MESSAGE_ERROR_FILE_NOT_FOUND);
         String url = path.concat(fileName);
         File file = (isClassLoader) ?
                 new File(clazz.getClassLoader().getResource(url).getFile()) :
                 new File(url);
-        if(!CommonValidateCMM.isValidObject(file))
+        if(!CommonValidateCMM.isObject(file))
             throw new BBSFileException(ConstantSystemCMM.CODE_ERROR_FILE_NOT_FOUND, ConstantSystemCMM.MESSAGE_ERROR_FILE_NOT_FOUND);
         return file;
     }
