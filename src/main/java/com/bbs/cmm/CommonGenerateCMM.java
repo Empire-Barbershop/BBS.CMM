@@ -43,17 +43,16 @@ public class CommonGenerateCMM {
     public static String concat(String separator, String... values){
         if(!CommonValidateCMM.isString(values))
             return (String) ConstantCMM.VALUE_OBJECT_DEFAULT;
-        if(!CommonValidateCMM.isString(separator))
-            separator = ConstantCMM.VALUE_STRING_CONCAT;
+        separator = ConstantCMM.VALUE_OBJECT_DEFAULT != separator ?
+                CommonValidateCMM.isString(separator) ? separator :
+                ConstantCMM.VALUE_STRING_WHITE_SPACE.contains(separator) ? separator : ConstantCMM.VALUE_STRING_CONCAT
+                : ConstantCMM.VALUE_STRING_CONCAT;
         String result = ConstantCMM.VALUE_STRING_EMPTY;
         int size = values.length;
         int position = ConstantCMM.VALUE_INTEGER_ZERO;
         boolean addSeparator;
         for(String value : values){
-            addSeparator = CommonValidateCMM.isString(value);
-            if(!addSeparator)
-                value = ConstantCMM.VALUE_STRING_EMPTY;
-            else addSeparator = (position + ConstantCMM.VALUE_INTEGER_ONE) < size;
+            addSeparator = (position + ConstantCMM.VALUE_INTEGER_ONE) < size;
             result += value.concat(addSeparator ? separator : ConstantCMM.VALUE_STRING_EMPTY);
             position++;
         }
