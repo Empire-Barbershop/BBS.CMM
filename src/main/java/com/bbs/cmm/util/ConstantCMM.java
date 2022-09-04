@@ -1,5 +1,7 @@
 package com.bbs.cmm.util;
 
+import java.util.UUID;
+
 /**
  * @name          ConstantCMM.
  * @description   Representa las constantes comunes.
@@ -39,5 +41,8 @@ public class ConstantCMM {
 
     // VALUE - OBJECT
     public static final Object VALUE_OBJECT_DEFAULT = null;
+
+    // VALUE - UUID
+    public static final UUID VALUE_UUID_SYSTEM = new UUID(0x6ba7b8109dad11d1L, 0x80b400c04fd430c8L);
 
 }
